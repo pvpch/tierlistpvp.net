@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #0d001f, #29004c);
+  font-family: 'Press Start 2P', cursive, monospace;
+  color: #ccc;
+  user-select: none;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Заголовок с RGB анимацией */
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #bb86fc;
+  animation: rgbGlow 6s linear infinite;
+  text-align: center;
+  text-shadow:
+    0 0 10px #bb86fc,
+    0 0 20px #bb86fc,
+    0 0 30px #7b1fa2,
+    0 0 40px #7b1fa2,
+    0 0 50px #bb86fc;
+}
+
+/* RGB подсветка для кнопок фильтров */
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filters button {
+  background: #2c0050;
+  border: 2px solid #7b1fa2;
+  padding: 10px 18px;
+  font-size: 0.8rem;
+  color: #ccc;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 0 10px #7b1fa2,
+    0 0 20px #bb86fc,
+    inset 0 0 15px #bb86fc;
+  animation: rgbGlowBtn 8s linear infinite;
+}
+
+.filters button:hover,
+.filters button.active {
+  background: #bb86fc;
+  color: #1b0033;
+  border-color: #450085;
+  box-shadow:
+    0 0 15px #450085,
+    0 0 30px #bb86fc,
+    inset 0 0 20px #450085;
+}
+
+/* Контейнер рангов */
+.rank-container {
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Секции с рангами */
+.rank-section {
+  margin-bottom: 30px;
+  border: 2px solid #7b1fa2;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: rgba(45, 0, 70, 0.5);
+  box-shadow: 0 0 15px #7b1fa2;
+}
+
+.rank-header {
+  margin: 0 0 10px 0;
+  font-size: 1.3rem;
+  color: #bb86fc;
+  text-shadow: 0 0 10px #bb86fc;
+  text-align: center;
+}
+
+/* Игроки в рангах */
+.rank-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  background-color: rgba(0,0,0,0.5);
+  cursor: pointer;
+  color: #ccc;
+  transition: background-color 0.25s ease;
+  box-shadow:
+    0 0 8px #7b1fa2;
+}
+
+.rank-item:hover {
+  background-color: rgba(187, 134, 252, 0.2);
+  box-shadow:
+    0 0 20px #bb86fc,
+    0 0 30px #7b1fa2;
+}
+
+.rank-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.rank-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.rank-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #bb86fc;
+}
+
+.player-name {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+/* Модальное окно */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(13,0,31,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: #1a003d;
+  border-radius: 15px;
+  padding: 25px 30px;
+  box-shadow:
+    0 0 15px #bb86fc,
+    inset 0 0 20px #7b1fa2;
+  width: 90%;
+  max-width: 400px;
+  color: #ccc;
+  font-size: 0.9rem;
+  text-align: center;
+  user-select: text;
+}
+
+#modal-title {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #bb86fc;
+}
+
+#modal-desc {
+  margin-bottom: 25px;
+}
+
+.btn-close {
+  background: #7b1fa2;
+  color: #eee;
+  border: none;
+  padding: 12px 20px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  transition: background-color 0.3s ease;
+  box-shadow:
+    0 0 15px #bb86fc;
+}
+
+.btn-close:hover {
+  background: #bb86fc;
+  color: #1b0033;
+  box-shadow:
+    0 0 20px #7b1fa2;
+}
+
+/* Анимация RGB для заголовков */
+@keyframes rgbGlow {
+  0% { color: #bb86fc; text-shadow: 0 0 10px #bb86fc; }
+  33% { color: #7b1fa2; text-shadow: 0 0 15px #7b1fa2; }
+  66% { color: #bb86fc; text-shadow: 0 0 20px #bb86fc; }
+  100% { color: #7b1fa2; text-shadow: 0 0 10px #7b1fa2; }
+}
+
+/* RGB анимация для кнопок */
+@keyframes rgbGlowBtn {
+  0% {
+    box-shadow:
+      0 0 10px #7b1fa2,
+      0 0 20px #bb86fc,
+      inset 0 0 15px #bb86fc;
+  }
+  50% {
+    box-shadow:
+      0 0 20px #bb86fc,
+      0 0 30px #7b1fa2,
+      inset 0 0 20px #7b1fa2;
+  }
+  100% {
+    box-shadow:
+      0 0 10px #7b1fa2,
+      0 0 20px #bb86fc,
+      inset 0 0 15px #bb86fc;
+  }
+}
+
+/* Адаптив */
+@media (max-width: 700px) {
+  .rank-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .rank-icon {
+    margin-bottom: 5px;
+  }
+}
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.pulse-open {
+  animation: pulse 0.4s ease;
+}
+.spin {
+  animation: spin 5s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
